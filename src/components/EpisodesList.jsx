@@ -4,15 +4,16 @@ import Episode from "./Episode";
 
 const initialState = [];
 
-function EpisodesList({ season }) {
-  const [episodes, setEpisode] = useState(initialState);
+function EpisodesList({ season, search }) {
+  const [episodes, setEpisodes] = useState(initialState);
 
-  console.log("Resolving...");
+  // console.log("Resolving...");
 
   useEffect(() => {
 
     getEpisodes().then((episodes) => {
-      setEpisode(episodes);
+      // console.log(episodes);
+      setEpisodes(episodes);
     });
 
   }, []);
@@ -23,6 +24,7 @@ function EpisodesList({ season }) {
       ? 'Loading...' 
       : episodes
           .filter((e) => (season === null ? true : e.season === season))
+          .filter((e) => e.name.includes(search))
           .map((episode, i) => (
             <Episode
               key={i}
