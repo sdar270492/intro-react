@@ -19,6 +19,15 @@ export function getEpisodes() {
         .then((response) => response.data);
 }
 
+export function getEpisode(id) {
+    return axios
+        .get(`https://2f807169-eb60-4cae-ae05-940d842c6739.mock.pstmn.io/episode/${id}`, {
+            headers: { authorization: `Bearer ${localStorage.getItem("token")}` },
+            // headers: { authorization: `Bearer ZGKBU69na8IvQApqJRiu4XlwskjGtPqgkY6tScIr` },
+        })
+        .then((response) => response.data);
+}
+
 export function login(username, password) {
     return axios
         .post("https://2f807169-eb60-4cae-ae05-940d842c6739.mock.pstmn.io/login", { username, password })

@@ -28,6 +28,7 @@ function EpisodesList({ season, search }) {
           .map((episode, i) => (
             <Episode
               key={i}
+              id={episode.id}
               img={episode.image.medium}
               title={episode.name}
               description={episode.summary}
